@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "google-calendar": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-v",
+        "C:/Harshith/Tekplanit/.google-calendar-mcp:/app/credentials",
+        "-p",
+        "8080:8080",
+        "google-calendar-mcp"
+      ]
+    }
+  }
+}
