@@ -29,10 +29,8 @@ An MCP (Model Context Protocol) server that connects Claude Desktop to Google Ca
 
 ### 1. Clone the Repository
 
-```bash
-git clone https://github.com/yourusername/google-calendar-mcp.git
-cd google-calendar-mcp
-```
+    git clone https://github.com/Harshith241/google-calendar-mcp.git
+    cd google-calendar-mcp
 
 ### 2. Set Up Google Cloud Project
 
@@ -57,33 +55,27 @@ cd google-calendar-mcp
 
 ### 4. Set Up Credentials Folder
 
-```bash
-# Windows
-mkdir %USERPROFILE%\.google-calendar-mcp
-copy path\to\downloaded\credentials.json %USERPROFILE%\.google-calendar-mcp\
+    # Windows
+    mkdir %USERPROFILE%\.google-calendar-mcp
+    copy path\to\downloaded\credentials.json %USERPROFILE%\.google-calendar-mcp\
 
-# Mac/Linux
-mkdir -p ~/.google-calendar-mcp
-cp path/to/downloaded/credentials.json ~/.google-calendar-mcp/
-```
+    # Mac/Linux
+    mkdir -p ~/.google-calendar-mcp
+    cp path/to/downloaded/credentials.json ~/.google-calendar-mcp/
 
 ### 5. Build Docker Image
 
-```bash
-docker build -t google-calendar-mcp .
-```
+    docker build -t google-calendar-mcp .
 
 ### 6. Authenticate with Google
 
 **Windows:**
-```bash
-docker run -it --rm -v %USERPROFILE%\.google-calendar-mcp:/app/credentials -p 8081:8080 google-calendar-mcp python auth_setup_manual.py
-```
+
+    docker run -it --rm -v %USERPROFILE%\.google-calendar-mcp:/app/credentials -p 8081:8080 google-calendar-mcp python auth_setup_manual.py
 
 **Mac/Linux:**
-```bash
-docker run -it --rm -v ~/.google-calendar-mcp:/app/credentials -p 8081:8080 google-calendar-mcp python auth_setup_manual.py
-```
+
+    docker run -it --rm -v ~/.google-calendar-mcp:/app/credentials -p 8081:8080 google-calendar-mcp python auth_setup_manual.py
 
 Follow the prompts:
 1. Copy the authorization URL
@@ -100,25 +92,23 @@ Follow the prompts:
 
 Add this configuration:
 
-```json
-{
-  "mcpServers": {
-    "google-calendar": {
-      "command": "docker",
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "-v",
-        "YOUR_HOME_PATH/.google-calendar-mcp:/app/credentials",
-        "-p",
-        "8081:8080",
-        "google-calendar-mcp"
-      ]
+    {
+      "mcpServers": {
+        "google-calendar": {
+          "command": "docker",
+          "args": [
+            "run",
+            "-i",
+            "--rm",
+            "-v",
+            "YOUR_HOME_PATH/.google-calendar-mcp:/app/credentials",
+            "-p",
+            "8081:8080",
+            "google-calendar-mcp"
+          ]
+        }
+      }
     }
-  }
-}
-```
 
 **Replace `YOUR_HOME_PATH`:**
 - Windows: `C:/Users/YourUsername`
@@ -131,39 +121,32 @@ Completely quit and restart Claude Desktop for changes to take effect.
 ## Usage Examples
 
 ### Schedule a Meeting
-```
-Schedule a meeting called "Team Standup" tomorrow at 10:00 AM
-```
+
+    Schedule a meeting called "Team Standup" tomorrow at 10:00 AM
 
 ### Schedule with Attendees and Meet Link
-```
-Schedule a meeting called "Client Call" on January 15 at 2:00 PM with john@example.com, add a Google Meet link
-```
+
+    Schedule a meeting called "Client Call" on January 15 at 2:00 PM with john@example.com, add a Google Meet link
 
 ### Check Availability
-```
-Check my calendar availability for next week
-```
+
+    Check my calendar availability for next week
 
 ### Find Free Slots
-```
-Find free time slots tomorrow for a 2-hour meeting
-```
+
+    Find free time slots tomorrow for a 2-hour meeting
 
 ### List Upcoming Events
-```
-Show me my upcoming calendar events
-```
+
+    Show me my upcoming calendar events
 
 ### Reschedule a Meeting
-```
-Reschedule event [event-id] to next Monday at 3:00 PM
-```
+
+    Reschedule event [event-id] to next Monday at 3:00 PM
 
 ### Cancel a Meeting
-```
-Cancel the meeting with event ID [event-id]
-```
+
+    Cancel the meeting with event ID [event-id]
 
 ## Available Tools
 
@@ -198,7 +181,7 @@ All tools accept parameters to customize behavior:
 - Rebuild Docker image: `docker build -t google-calendar-mcp .`
 
 ### Authentication Failed
-- Re-run authentication: `docker run -it --rm -v ...credentials -p 8081:8080 google-calendar-mcp python auth_setup_manual.py`
+- Re-run authentication: `docker run -it --rm -v ~/.google-calendar-mcp:/app/credentials -p 8081:8080 google-calendar-mcp python auth_setup_manual.py`
 - Verify OAuth consent screen is configured correctly
 - Check that your email is added as a test user
 
@@ -213,17 +196,15 @@ All tools accept parameters to customize behavior:
 
 ## Architecture
 
-```
-Claude Desktop
-      ↓
-   MCP Protocol (JSON-RPC)
-      ↓
-Docker Container (Python + FastMCP)
-      ↓
-Google Calendar API (OAuth 2.0)
-      ↓
-Google Calendar
-```
+    Claude Desktop
+          ↓
+       MCP Protocol (JSON-RPC)
+          ↓
+    Docker Container (Python + FastMCP)
+          ↓
+    Google Calendar API (OAuth 2.0)
+          ↓
+    Google Calendar
 
 ## Tech Stack
 
@@ -257,10 +238,10 @@ MIT License - feel free to use this project for personal or commercial purposes.
 
 ## Author
 
-Harshith Vijayan - https://x.com/itzharshith
+Harshith Vijayan - [@itzharshith](https://x.com/itzharshith)
 
 ---
 
 ⭐ Star this repo if you find it helpful!
 
-📝 Report issues or request features in the [Issues](https://github.com/yourusername/google-calendar-mcp/issues) sect
+📝 Report issues or request features in the [Issues](https://github.com/Harshith241/google-calendar-mcp/issues) section.
