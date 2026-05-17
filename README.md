@@ -257,7 +257,7 @@ MIT License - feel free to use this project for personal or commercial purposes.
 
 ## Author
 
-Your Name - [@yourhandle](https://twitter.com/yourhandle)
+Harshith Vijayan - https://x.com/itzharshith
 
 ---
 
